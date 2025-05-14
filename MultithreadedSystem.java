@@ -15,7 +15,7 @@ class Task {
         System.out.printf("Processing Task ID: %d | Message: %s | Thread: %s%n",
                           id, message, Thread.currentThread().getName());
         try {
-            Thread.sleep(new Random().nextInt(1000));  // simulate processing
+            Thread.sleep(new Random().nextInt(1000));  
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
         }
@@ -86,7 +86,7 @@ class Producer implements Runnable {
     }
 
     private int queueSize(BlockingTaskQueue queue) {
-        // reflection is not a good practice, but shown here for demo
+        
         try {
             var field = queue.getClass().getDeclaredField("queue");
             field.setAccessible(true);
@@ -137,7 +137,7 @@ public class MultithreadedSystem {
             consumerPool.execute(new Consumer(queue));
         }
 
-        // Let it run for 10 seconds
+    
         Thread.sleep(10000);
 
         producerPool.shutdownNow();
